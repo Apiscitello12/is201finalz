@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Mood Melody</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      text-align: center;
+      padding: 50px;
+      transition: background 0.5s ease;
+    }
+    h1 {
+      font-size: 2.5em;
+    }
+    select, button {
+      padding: 10px 20px;
+      font-size: 1em;
+      margin: 10px;
+      border: none;
+      border-radius: 5px;
+    }
+    #output {
+      margin-top: 30px;
+      font-size: 1.2em;
+      background: rgba(255, 255, 255, 0.8);
+      padding: 20px;
+      border-radius: 10px;
+      display: inline-block;
+    }
+  </style>
+  <a href="index.html">Back to Home Page</a> 
+</head>
+<body>
+  <h1>Mood Melody 🎵</h1>
+  <p>Select your mood to get a song, a quote, and a new vibe!</p>
+  <select id="mood">
+    <option value="happy">Happy</option>
+    <option value="sad">Sad</option>
+    <option value="excited">Excited</option>
+    <option value="relaxed">Relaxed</option>
+  </select>
+  <button onclick="generateMood()">Go</button>
+
+  <div id="output"></div>
+
+  <script>
+    const moodData = {
+      happy: {
+        song: "i - Kendrick Lamar",
+        quote: "I love myself.",
+        color: "#f9f871"
+      },
+      sad: {
+        song: "Something in the Orange - Zach Bryan",
+        quote: "To you, I'm just a man, to me, you're all I am.",
+        color: "#a0c4ff"
+      },
+      excited: {
+        song: "Party Poison - My Chemical Romance",
+        quote: "Light up the stage and watch me kick out the jams.",
+        color: "#ffadad"
+      },
+      relaxed: {
+        song: "Luther - Kendrick Lamar and SZA",
+        quote: "If this world was mine, I'd take your dreams and make 'em multiply.",
+        color: "#caffbf"
+      }
+    };
+
+    function generateMood() {
+      const mood = document.getElementById('mood').value;
+      const data = moodData[mood];
+      document.body.style.backgroundColor = data.color;
+      document.getElementById('output').innerHTML = `
+        <h2>🎶 Your Mood Match</h2>
+        <p><strong>Song:</strong> ${data.song}</p>
+        <p><strong>Quote:</strong> “${data.quote}”</p>
+      `;
+    }
+  </script>
+</body>
+</html>
